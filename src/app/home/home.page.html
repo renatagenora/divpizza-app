@@ -44,5 +44,11 @@
         </ion-card>
       </div>
     </div>
+    <div *ngIf="catalogo.length === 0">
+      <ion-card class="card-transparente">
+        <img src="../assets/nao-tem-pizza.png" />
+        <ion-card-title>Não tem pizzas no momento.</ion-card-title>
+      </ion-card>
+    </div>
   </div>
 </ion-content>
