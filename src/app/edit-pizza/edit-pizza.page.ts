@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { ToastController, NavController } from '@ionic/angular';
+
 
 @Component({
   selector: 'app-edit-pizza',
@@ -11,10 +13,9 @@ export class EditPizzaPage {
   descricaopizza: String = ""
   precopizza: String = ""
   idpizza: String = ""
-  constructor(private activatedroute: ActivatedRoute) { }
+  constructor(private activatedroute: ActivatedRoute, private nav:NavController) { } 
 
-
-  ionViewDidEnter() {
+    ionViewDidEnter() {
     this.idpizza = this.activatedroute.snapshot.params.id
     this.recuperarpizza(this.idpizza)
 
@@ -30,6 +31,16 @@ export class EditPizzaPage {
     this.precopizza = pizzaObjeto.precoPizza
 
   }
-
+   editar(form){
+    let dadospizza= form.value
+    dadospizza.id=this.idpizza
+    let dadosString = JSON.stringify(dadospizza)
+    localStorage.setItem(this.idpizza.toString(),dadosString)
+    this.voltarParaHome()
+   }
+   
+   voltarParaHome() {
+    this.nav.back()
+  }
 
 }
