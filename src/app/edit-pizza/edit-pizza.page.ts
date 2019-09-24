@@ -13,6 +13,7 @@ export class EditPizzaPage {
   descricaopizza: String = ""
   precopizza: String = ""
   idpizza: String = ""
+  pizzaPronta: Boolean = false;
   constructor(private activatedroute: ActivatedRoute, private nav:NavController) { } 
 
     ionViewDidEnter() {
@@ -26,9 +27,15 @@ export class EditPizzaPage {
     let pizzaString = localStorage.getItem(idpizza)
     let pizzaObjeto = JSON.parse(pizzaString)
     console.log(pizzaObjeto)
-    this.nomepizza = pizzaObjeto.nomePizza
-    this.descricaopizza = pizzaObjeto.descricaoPizza
-    this.precopizza = pizzaObjeto.precoPizza
+
+    setTimeout(() => {
+      this.pizzaPronta = true
+      setTimeout(() => {
+      this.pizzaPronta = pizzaObjeto.nomePizza
+      this.descricaopizza = pizzaObjeto.descricaoPizza
+      this.precopizza =  pizzaObjeto.precoPizza
+    }, 10);
+    }, 5000)
 
   }
    editar(form){

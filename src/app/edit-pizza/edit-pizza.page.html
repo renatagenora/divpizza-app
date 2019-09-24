@@ -10,18 +10,32 @@
 
 <ion-content>
   <form #form="ngForm" (ngSubmit)="editar(form)">
-    <ion-item>
-      <ion-label position="floating"> Nome da Pizza </ion-label>
+    <div *ngIf="pizzaPronta">
+      <ion-item>
+        <ion-label position="floating"> Nome da Pizza </ion-label>
         <ion-input type="text" name="nomePizza" value={{nomepizza}} ngModel></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label position="floating"> Descriçâo da Pizza </ion-label>
-      <ion-input type="text" name="descricaoPizza" value={{descricaopizza}} ngModel></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label position="floating"> Preço da Pizza </ion-label>
-      <ion-input type="text" name="precoPizza" value={{precopizza}} ngModel></ion-input>
-    </ion-item>
-        <ion-button expand="block" type="submit"> Salvar </ion-button>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating"> Descriçâo da Pizza </ion-label>
+        <ion-input type="text" name="descricaoPizza" value={{descricaopizza}} ngModel></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating"> Preço da Pizza </ion-label>
+        <ion-input type="text" name="precoPizza" value={{precopizza}} ngModel></ion-input>
+      </ion-item>
+      <ion-button expand="block" type="submit"> Salvar </ion-button>
+    </div>
+    <div *ngIf="!pizzaPronta">
+      <ion-item>
+        <ion-skeleton-text animated></ion-skeleton-text>
+      </ion-item>
+      <ion-item>
+        <ion-skeleton-text animated></ion-skeleton-text>
+      </ion-item>
+      <ion-item>
+        <ion-skeleton-text animated></ion-skeleton-text>
+      </ion-item>
+
+    </div>
   </form>
 </ion-content>
