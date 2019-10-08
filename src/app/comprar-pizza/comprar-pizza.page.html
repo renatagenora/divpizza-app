@@ -18,8 +18,11 @@
       </div>
       <div class="ion-padding ion-text-center ion-margin-bottom">
         <h3> Vai dividir com quantos? </h3>
-        <ion-range pin="true" min="1" max="10" (ionChange)="atualizarcomRange()" [(ngModel)s]= "divisor"></ion-range> 
+        <ion-range pin="true" min="1" max="10" (ionChange)="atualizarcomRange()" [(ngModel)]="divisor"></ion-range>
       </div>
-      </ion-card-content>
+    </ion-card-content>
+    <ion-button [routerLink]="['/finalizar-compra', idPizza, divisor]" expand="block">
+      Continuar
+    </ion-button>
   </ion-card>
 </ion-content>
